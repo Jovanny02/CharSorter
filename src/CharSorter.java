@@ -13,13 +13,14 @@ public class CharSorter {
     //char[] sortArray = userInput.toCharArray();   // user array input
 
     while (loopingMenu) {
-        try {
+       try {
             System.out.println("Please select the option you would like to see");
             System.out.println("1.Display character frequencies alphabetically \n2.Display sorted frequencies \n3.Show types of character frequencies \n4.Exit");
             switchMenu = scnr.nextInt();
             switch (switchMenu) {
                 case 1:
                     System.out.println("Case 1 worked");
+                    System.out.println(alphabetizer(userInput));
                     break;
                 case 2:
                     System.out.println("Case 2 worked");
@@ -51,8 +52,6 @@ public class CharSorter {
         return;
     }
 
-
-
     public static int[] charTypes(String userInput) {
         int[] returnThis = new int[4];
         char[] sortArray = userInput.toCharArray();
@@ -72,6 +71,22 @@ public class CharSorter {
         }
 
         return returnThis;
+    }
+    public static char[] alphabetizer(String userInput) {
+        char[] alphaArray = userInput.toCharArray();
+        int lengthVariable = userInput.length() - 1; // is -1 so it stopped running into issues
+            for(; lengthVariable > 0; lengthVariable--){ // decrements length
+                for(int i = 0; i < lengthVariable; i++){ // brings largest value to  right
+                    if(Character.valueOf(alphaArray[i]) > Character.valueOf(alphaArray[i + 1])){
+                        char tempVariable = alphaArray[i];
+                        alphaArray[i] = alphaArray[i + 1];
+                        alphaArray[i + 1] = tempVariable;
+                    }
+
+                }
+
+            }
+        return alphaArray;
     }
 
 
